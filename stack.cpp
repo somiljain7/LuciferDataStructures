@@ -1,76 +1,84 @@
+/*STACK AS AN ARRAY*/
 #include<iostream.h>
 #include<conio.h>
+#include<stdio.h>
+#define size 10
+struct person
+ {
+   char name[size];
+   int age;
+ };
+class stack
+ {
+    int top;
+    person a[size];
+    public:
+       stack()
+        {
+           top=-1;//INITIALIZING
+        }
+       void Push()//INSERTION OF A ELEMENT
+        {
+	  if(top<size-1)
+	    { cout<<"\nname="<<endl;
+	      gets(a[++top].name);
+	      cout<<"\nage="<<endl;
+	      cin>>a[top].age;
+            }
+          else
+            cout<<"Stack overflow";
+        }
+       void Pop()//DELETION OF AN ELEMENT
+        {
+           if (top>-1)
+            {
+               cout<<"\nDeleted element is : ";
+               cout<<a[top].name;
+			   cout<< a[top].age;
+			   top--;
+            }
+           else
+             cout<<"Stack underflow";
+        }
+      void Display();
+ };
+
+ void stack:: Display()
+  {
+     int i ;
+     for(i=top; i>=0; i--)
+       {
+         cout<<a[i].name;
+         cout<<a[i].age;
+       }
+  }
 
 void main()
-{clrscr();
-struct node
-{
-int info;
-node *next;
-}*top,*save,*ptr;
-
-int c=0,data;
-top=NULL;
-
-while(c<3)
-{
-cout<<"1.Push\n2.Pop\n3.Exit\n";
-cin>>c;
-
-switch(c)
-{
-case 1:
-cout<<"Enter Data\n";
-cin>>data;
-ptr =new node;
-ptr->info=data;
-ptr->next=NULL;
-
-if(top==NULL)
-{
-top=ptr;
-cout<<"Item Inserted\n";
+ {
+   clrscr();
+   int x,y=1;
+   stack s;
+   while (if(y==1))
+    {
+        cout<<"Menu is : "<<"\n"<< "Enter 1 to push" <<"\n";
+        cout<<"Enter 2 to pop"<<"\n";
+        cout<<"Enter 3 to display"<<"\n";
+        cout<<"Enter 4 to exit"<<"\n";
+      cin>>x;
+      switch(x)
+       {
+         case 1: s.Push();
+	         break;
+         case 2: s.Pop();
+                     break;
+         case 3: s.Display();
+	          break;
+         case 4: break;
+          }
+       cout<<"\n enter 1 for more";
+       cin>>y;
 }
-
-else
-{
-save=top;
-top=ptr;
-top->next=save;
-cout<<"Item Inserted\n";
-}
-
-break;
-
-case 2:
-if(top==NULL)
-{
-cout<<"Underflow\n";
-}
-
-else
-{
-ptr=top;
-top=top->next;
-delete ptr;
-cout<<"Item Deleted\n";
-}
-break;
-}
-
-if(top!=NULL)
-{
-cout<<"Stack:\n";
-ptr=top;
-while(ptr!=NULL)
-{
-cout<<"<-"<<ptr->info;
-ptr=ptr->next;
-}
-cout<<"\n";
-}
-
-}
-
-}
+      
+  getch();
+ }
 
